@@ -1,0 +1,726 @@
+
+
+
+<!DOCTYPE html>
+<html>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# githubog: http://ogp.me/ns/fb/githubog#">
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CSV · mbostock/d3 Wiki</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub" />
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png" />
+    <link rel="logo" type="image/svg" href="https://github-media-downloads.s3.amazonaws.com/github-logo.svg" />
+    <meta property="og:image" content="https://github.global.ssl.fastly.net/images/modules/logos_page/Octocat.png">
+    <meta name="hostname" content="github-fe124-cp1-prd.iad.github.net">
+    <meta name="ruby" content="ruby 1.9.3p194-tcs-github-tcmalloc (e1c0c3f392) [x86_64-linux]">
+    <link rel="assets" href="https://github.global.ssl.fastly.net/">
+    <link rel="conduit-xhr" href="https://ghconduit.com:25035/">
+    <link rel="xhr-socket" href="/_sockets" />
+    
+
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="selected-link" value="repo_wiki" data-pjax-transient />
+    <meta content="collector.githubapp.com" name="octolytics-host" /><meta content="collector-cdn.github.com" name="octolytics-script-host" /><meta content="github" name="octolytics-app-id" /><meta content="D054C6B8:643D:A0C4061:52BDB3FC" name="octolytics-dimension-request_id" /><meta content="2843237" name="octolytics-actor-id" /><meta content="isaacwhite" name="octolytics-actor-login" /><meta content="18f344b024e2a0eee5143f6226f12e91bdc320b55683e141359e4b05810810b3" name="octolytics-actor-hash" />
+    
+
+    
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <meta content="authenticity_token" name="csrf-param" />
+<meta content="KmYNg48aVq2SPT4aXtCZdYJkkQKRV0lGGr0M1YqnnBw=" name="csrf-token" />
+
+    <link href="https://github.global.ssl.fastly.net/assets/github-3944f96c1c19f752fe766b332fb7716555c8296e.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="https://github.global.ssl.fastly.net/assets/github2-5a80bdfa39bad96522873dfd72fa56c72e6675b3.css" media="all" rel="stylesheet" type="text/css" />
+    
+
+    
+
+      <script src="https://github.global.ssl.fastly.net/assets/frameworks-29a3fb0547e33bd8d4530bbad9bae3ef00d83293.js" type="text/javascript"></script>
+      <script src="https://github.global.ssl.fastly.net/assets/github-0b6bf4a8bb8bc8246eb6d07db6a63cde130f5001.js" type="text/javascript"></script>
+      
+      <meta http-equiv="x-pjax-version" content="affaac5ba4a5dec7537bc81ec484528d">
+
+        <script src="https://github.global.ssl.fastly.net/assets/wiki-d0c3d0f1be4bd69eb1c09955a5d45d29f62a3c5e.js" type="text/javascript"></script>
+  <meta property="og:title" content="d3"/>
+  <meta property="og:type" content="githubog:gitrepository"/>
+  <meta property="og:url" content="https://github.com/mbostock/d3"/>
+  <meta property="og:image" content="https://github.global.ssl.fastly.net/images/gravatars/gravatar-user-420.png"/>
+  <meta property="og:site_name" content="GitHub"/>
+  <meta property="og:description" content="d3 - A JavaScript visualization library for HTML and SVG."/>
+
+  <meta name="description" content="d3 - A JavaScript visualization library for HTML and SVG." />
+
+  <meta content="230541" name="octolytics-dimension-user_id" /><meta content="mbostock" name="octolytics-dimension-user_login" /><meta content="943149" name="octolytics-dimension-repository_id" /><meta content="mbostock/d3" name="octolytics-dimension-repository_nwo" /><meta content="true" name="octolytics-dimension-repository_public" /><meta content="false" name="octolytics-dimension-repository_is_fork" /><meta content="943149" name="octolytics-dimension-repository_network_root_id" /><meta content="mbostock/d3" name="octolytics-dimension-repository_network_root_nwo" />
+  <link href="https://github.com/mbostock/d3/commits/master.atom" rel="alternate" title="Recent Commits to d3:master" type="application/atom+xml" />
+
+  </head>
+
+
+  <body class="logged_in  env-production macintosh vis-public">
+    <div class="wrapper">
+      
+      
+      
+      
+
+
+      <div class="header header-logged-in true">
+  <div class="container clearfix">
+
+    <a class="header-logo-invertocat" href="https://github.com/">
+  <span class="mega-octicon octicon-mark-github"></span>
+</a>
+
+    
+    <a href="/notifications" class="notification-indicator tooltipped downwards" data-gotokey="n" title="You have no unread notifications">
+        <span class="mail-status all-read"></span>
+</a>
+
+      <div class="command-bar js-command-bar  in-repository">
+          <form accept-charset="UTF-8" action="/search" class="command-bar-form" id="top_search_form" method="get">
+
+<input type="text" data-hotkey="/ s" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off"
+    
+    data-username="isaacwhite"
+      data-repo="mbostock/d3"
+      data-branch="master"
+      data-sha="11ff0b00c5dd44730e661f92f047fe114c4bccd5"
+  >
+
+    <input type="hidden" name="nwo" value="mbostock/d3" />
+
+    <div class="select-menu js-menu-container js-select-menu search-context-select-menu">
+      <span class="minibutton select-menu-button js-menu-target">
+        <span class="js-select-button">This repository</span>
+      </span>
+
+      <div class="select-menu-modal-holder js-menu-content js-navigation-container">
+        <div class="select-menu-modal">
+
+          <div class="select-menu-item js-navigation-item js-this-repository-navigation-item selected">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" class="js-search-this-repository" name="search_target" value="repository" checked="checked" />
+            <div class="select-menu-item-text js-select-button-text">This repository</div>
+          </div> <!-- /.select-menu-item -->
+
+          <div class="select-menu-item js-navigation-item js-all-repositories-navigation-item">
+            <span class="select-menu-item-icon octicon octicon-check"></span>
+            <input type="radio" name="search_target" value="global" />
+            <div class="select-menu-item-text js-select-button-text">All repositories</div>
+          </div> <!-- /.select-menu-item -->
+
+        </div>
+      </div>
+    </div>
+
+  <span class="octicon help tooltipped downwards" title="Show command bar help">
+    <span class="octicon octicon-question"></span>
+  </span>
+
+
+  <input type="hidden" name="ref" value="cmdform">
+
+</form>
+        <ul class="top-nav">
+          <li class="explore"><a href="/explore">Explore</a></li>
+            <li><a href="https://gist.github.com">Gist</a></li>
+            <li><a href="/blog">Blog</a></li>
+          <li><a href="https://help.github.com">Help</a></li>
+        </ul>
+      </div>
+
+    
+
+
+  <ul id="user-links">
+    <li>
+      <a href="/isaacwhite" class="name">
+        <img height="20" src="https://0.gravatar.com/avatar/738da26b30bebc3ce041aecb002ad929?d=https%3A%2F%2Fidenticons.github.com%2Ffd7606f9cfeff8bd0cd5eac296ffdc6e.png&amp;r=x&amp;s=140" width="20" /> isaacwhite
+      </a>
+    </li>
+
+      <li>
+        <a href="/new" id="new_repo" class="tooltipped downwards" title="Create a new repo" aria-label="Create a new repo">
+          <span class="octicon octicon-repo-create"></span>
+        </a>
+      </li>
+
+      <li>
+        <a href="/settings/profile" id="account_settings"
+          class="tooltipped downwards"
+          aria-label="Account settings "
+          title="Account settings ">
+          <span class="octicon octicon-tools"></span>
+        </a>
+      </li>
+      <li>
+        <a class="tooltipped downwards" href="/logout" data-method="post" id="logout" title="Sign out" aria-label="Sign out">
+          <span class="octicon octicon-log-out"></span>
+        </a>
+      </li>
+
+  </ul>
+
+<div class="js-new-dropdown-contents hidden">
+  
+
+<ul class="dropdown-menu">
+  <li>
+    <a href="/new"><span class="octicon octicon-repo-create"></span> New repository</a>
+  </li>
+  <li>
+    <a href="/organizations/new"><span class="octicon octicon-organization"></span> New organization</a>
+  </li>
+
+
+
+    <li class="section-title">
+      <span title="mbostock/d3">This repository</span>
+    </li>
+      <li>
+        <a href="/mbostock/d3/issues/new"><span class="octicon octicon-issue-opened"></span> New issue</a>
+      </li>
+</ul>
+
+</div>
+
+
+    
+  </div>
+</div>
+
+      
+
+      
+
+
+
+
+          <div class="site" itemscope itemtype="http://schema.org/WebPage">
+    
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+
+<ul class="pagehead-actions">
+
+    <li class="subscription">
+      <form accept-charset="UTF-8" action="/notifications/subscribe" class="js-social-container" data-autosubmit="true" data-remote="true" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="KmYNg48aVq2SPT4aXtCZdYJkkQKRV0lGGr0M1YqnnBw=" /></div>  <input id="repository_id" name="repository_id" type="hidden" value="943149" />
+
+    <div class="select-menu js-menu-container js-select-menu">
+      <a class="social-count js-social-count" href="/mbostock/d3/watchers">
+        1,797
+      </a>
+      <span class="minibutton select-menu-button with-count js-menu-target" role="button" tabindex="0">
+        <span class="js-select-button">
+          <span class="octicon octicon-eye-watch"></span>
+          Watch
+        </span>
+      </span>
+
+      <div class="select-menu-modal-holder">
+        <div class="select-menu-modal subscription-menu-modal js-menu-content">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notification status</span>
+            <span class="octicon octicon-remove-close js-menu-close"></span>
+          </div> <!-- /.select-menu-header -->
+
+          <div class="select-menu-list js-navigation-container" role="menu">
+
+            <div class="select-menu-item js-navigation-item selected" role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input checked="checked" id="do_included" name="do" type="radio" value="included" />
+                <h4>Not watching</h4>
+                <span class="description">You only receive notifications for conversations in which you participate or are @mentioned.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye-watch"></span>
+                  Watch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_subscribed" name="do" type="radio" value="subscribed" />
+                <h4>Watching</h4>
+                <span class="description">You receive notifications for all conversations in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-eye-unwatch"></span>
+                  Unwatch
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+            <div class="select-menu-item js-navigation-item " role="menuitem" tabindex="0">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <div class="select-menu-item-text">
+                <input id="do_ignore" name="do" type="radio" value="ignore" />
+                <h4>Ignoring</h4>
+                <span class="description">You do not receive any notifications for conversations in this repository.</span>
+                <span class="js-select-button-text hidden-select-button-text">
+                  <span class="octicon octicon-mute"></span>
+                  Stop ignoring
+                </span>
+              </div>
+            </div> <!-- /.select-menu-item -->
+
+          </div> <!-- /.select-menu-list -->
+
+        </div> <!-- /.select-menu-modal -->
+      </div> <!-- /.select-menu-modal-holder -->
+    </div> <!-- /.select-menu -->
+
+</form>
+    </li>
+
+  <li>
+  
+
+  <div class="js-toggler-container js-social-container starring-container on">
+    <a href="/mbostock/d3/unstar"
+      class="minibutton with-count js-toggler-target star-button starred upwards"
+      title="Unstar this repository" data-remote="true" data-method="post" rel="nofollow">
+      <span class="octicon octicon-star-delete"></span><span class="text">Unstar</span>
+    </a>
+
+    <a href="/mbostock/d3/star"
+      class="minibutton with-count js-toggler-target star-button unstarred upwards"
+      title="Star this repository" data-remote="true" data-method="post" rel="nofollow">
+      <span class="octicon octicon-star"></span><span class="text">Star</span>
+    </a>
+
+      <a class="social-count js-social-count" href="/mbostock/d3/stargazers">
+        21,014
+      </a>
+  </div>
+
+  </li>
+
+
+        <li>
+          <a href="/mbostock/d3/fork" class="minibutton with-count js-toggler-target fork-button lighter upwards" title="Fork this repo" rel="facebox nofollow">
+            <span class="octicon octicon-git-branch-create"></span><span class="text">Fork</span>
+          </a>
+          <a href="/mbostock/d3/network" class="social-count">4,202</a>
+        </li>
+
+
+</ul>
+
+        <h1 itemscope itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="repo-label"><span>public</span></span>
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author">
+            <a href="/mbostock" class="url fn" itemprop="url" rel="author"><span itemprop="title">mbostock</span></a>
+          </span>
+          <span class="repohead-name-divider">/</span>
+          <strong><a href="/mbostock/d3" class="js-current-repository js-repo-home-link">d3</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="Octocat-spinner-32" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      
+
+      <div class="repository-with-sidebar repo-container  ">
+
+        <div class="repository-sidebar">
+            
+
+<div class="sunken-menu vertical-right repo-nav js-repo-nav js-repository-container-pjax js-octicon-loaders">
+  <div class="sunken-menu-contents">
+    <ul class="sunken-menu-group">
+      <li class="tooltipped leftwards" title="Code">
+        <a href="/mbostock/d3" aria-label="Code" class="js-selected-navigation-item sunken-menu-item" data-gotokey="c" data-pjax="true" data-selected-links="repo_source repo_downloads repo_commits repo_tags repo_branches /mbostock/d3">
+          <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+        <li class="tooltipped leftwards" title="Issues">
+          <a href="/mbostock/d3/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="i" data-selected-links="repo_issues /mbostock/d3/issues">
+            <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+            <span class='counter'>142</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>        </li>
+
+      <li class="tooltipped leftwards" title="Pull Requests">
+        <a href="/mbostock/d3/pulls" aria-label="Pull Requests" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-gotokey="p" data-selected-links="repo_pulls /mbostock/d3/pulls">
+            <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull Requests</span>
+            <span class='counter'>46</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+
+        <li class="tooltipped leftwards" title="Wiki">
+          <a href="/mbostock/d3/wiki" aria-label="Wiki" class="selected js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_wiki /mbostock/d3/wiki">
+            <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+            <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>        </li>
+    </ul>
+    <div class="sunken-menu-separator"></div>
+    <ul class="sunken-menu-group">
+
+      <li class="tooltipped leftwards" title="Pulse">
+        <a href="/mbostock/d3/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="pulse /mbostock/d3/pulse">
+          <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped leftwards" title="Graphs">
+        <a href="/mbostock/d3/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-pjax="true" data-selected-links="repo_graphs repo_contributors /mbostock/d3/graphs">
+          <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+
+      <li class="tooltipped leftwards" title="Network">
+        <a href="/mbostock/d3/network" aria-label="Network" class="js-selected-navigation-item sunken-menu-item js-disable-pjax" data-selected-links="repo_network /mbostock/d3/network">
+          <span class="octicon octicon-git-branch"></span> <span class="full-word">Network</span>
+          <img alt="Octocat-spinner-32" class="mini-loader" height="16" src="https://github.global.ssl.fastly.net/images/spinners/octocat-spinner-32.gif" width="16" />
+</a>      </li>
+    </ul>
+
+
+  </div>
+</div>
+
+            <div class="only-with-full-nav">
+              
+
+  
+
+<div class="clone-url open"
+  data-protocol-type="http"
+  data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><strong>HTTPS</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field"
+           value="https://github.com/mbostock/d3.git" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/mbostock/d3.git" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url "
+  data-protocol-type="ssh"
+  data-url="/users/set_protocol?protocol_selector=ssh&amp;protocol_type=clone">
+  <h3><strong>SSH</strong> clone URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field"
+           value="git@github.com:mbostock/d3.git" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="git@github.com:mbostock/d3.git" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+  
+
+<div class="clone-url "
+  data-protocol-type="subversion"
+  data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><strong>Subversion</strong> checkout URL</h3>
+  <div class="clone-url-box">
+    <input type="text" class="clone js-url-field"
+           value="https://github.com/mbostock/d3" readonly="readonly">
+
+    <span class="js-zeroclipboard url-box-clippy minibutton zeroclipboard-button" data-clipboard-text="https://github.com/mbostock/d3" data-copied-hint="copied!" title="copy to clipboard"><span class="octicon octicon-clippy"></span></span>
+  </div>
+</div>
+
+
+<p class="clone-options">You can clone with
+      <a href="#" class="js-clone-selector" data-protocol="http">HTTPS</a>,
+      <a href="#" class="js-clone-selector" data-protocol="ssh">SSH</a>,
+      or <a href="#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <span class="octicon help tooltipped upwards" title="Get help on which URL is right for you.">
+    <a href="https://help.github.com/articles/which-remote-url-should-i-use">
+    <span class="octicon octicon-question"></span>
+    </a>
+  </span>
+</p>
+
+  <a href="http://mac.github.com" data-url="github-mac://openRepo/https://github.com/mbostock/d3" class="minibutton sidebar-button js-conduit-rewrite-url">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+
+              <a href="/mbostock/d3/archive/master.zip"
+                 class="minibutton sidebar-button"
+                 title="Download this repository as a zip file"
+                 rel="nofollow">
+                <span class="octicon octicon-cloud-download"></span>
+                Download ZIP
+              </a>
+            </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container>
+          
+
+<div class="tabnav">
+  <ul class="tabnav-tabs">
+    <li><a href="/mbostock/d3/wiki" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /mbostock/d3/wiki">Home</a></li>
+    <li><a href="/mbostock/d3/wiki/_pages" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /mbostock/d3/wiki/_pages">Pages</a></li>
+    <li><a href="/mbostock/d3/wiki/_history" class="js-selected-navigation-item tabnav-tab" data-selected-links=" /mbostock/d3/wiki/_history">History</a></li>
+  </ul>
+  <div class="tabnav-right">
+    <div class="tabnav-widget">
+      <a href="/mbostock/d3/wiki/_new" class="button minibutton primary js-new-wiki-page">New Page</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="wiki-wrapper" class="page">
+<div id="head">
+  <ul class="wiki-actions readability-extra">
+    <li class="gollum-minibutton"><a href="/mbostock/d3/wiki/CSV/_edit"
+       class="minibutton bigger action-edit-page">
+       Edit Page
+     </a></li>
+    <li class="gollum-minibutton"><a href="/mbostock/d3/wiki/CSV/_history"
+       class="minibutton bigger action-page-history">
+       Page History
+     </a></li>
+    <li class="gollum-minibutton"><span class="js-zeroclipboard minibutton" data-clipboard-text="https://github.com/mbostock/d3.wiki.git" data-copied-hint="copied!" title="Click to copy url to clipboard">Clone URL</span></li>
+  </ul>
+  <h1 class="instapaper_title">CSV</h1>
+</div>
+<div id="wiki-content">
+  <div class="wrap">
+  <div id="wiki-body" class="gollum-markdown-content instapaper_body">
+    <div class="markdown-body">
+      <blockquote>
+<p><a href="Home">Wiki</a> ▸ <a class="internal present" href="/mbostock/d3/wiki/API-Reference">API Reference</a> ▸ <strong>CSV</strong></p>
+</blockquote>
+
+<p>D3 provides built-in support for parsing <a href="http://en.wikipedia.org/wiki/Comma-separated_values">comma-separated values</a>, tab-separated values and arbitrary delimiter-separated values. These tabular formats are popular with spreadsheet programs such as Microsoft Excel. Tabular formats are often more space-efficient than JSON, which can improve loading times for large datasets.</p>
+
+<p><a name="wiki-csv" href="#wiki-csv">#</a> d3.<b>csv</b>(<i>url</i>[, <i>accessor</i>][, <i>callback</i>])</p>
+
+<p>Issues an HTTP GET request for the comma-separated values (CSV) file at the specified <em>url</em>. The file contents are assumed to be <a href="http://tools.ietf.org/html/rfc4180">RFC4180-compliant</a>. The mime type of the request will be "text/csv". The request is processed asynchronously, such that this method returns immediately after opening the request. When the CSV data is available, the specified <em>callback</em> will be invoked with the <a href="CSV#wiki-parse">parsed rows</a> as the argument. If an error occurs, the callback function will instead be invoked with null. An optional <i>accessor</i> function may be specified, which is then passed to <a href="#wiki-parse">d3.csv.parse</a>; the <i>accessor</i> may also be specified by using the return request object’s row function. For example:</p>
+
+<div class="highlight"><pre><span class="nx">d3</span><span class="p">.</span><span class="nx">csv</span><span class="p">(</span><span class="s2">"path/to/file.csv"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">row</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{</span><span class="nx">key</span><span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="o">:</span> <span class="o">+</span><span class="nx">d</span><span class="p">.</span><span class="nx">value</span><span class="p">};</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">rows</span><span class="p">)</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rows</span><span class="p">);</span> <span class="p">});</span>
+</pre></div>
+
+<p>See the <a href="http://bl.ocks.org/mbostock/4060606">unemployment choropleth</a> for an example.</p>
+
+<p><a name="wiki-parse" href="#wiki-parse">#</a> d3.csv.<b>parse</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Parses the specified <em>string</em>, which is the contents of a CSV file, returning an array of objects representing the parsed rows. The string is assumed to be <a href="http://tools.ietf.org/html/rfc4180">RFC4180-compliant</a>. Unlike the <a href="CSV#wiki-parseRows">parseRows</a> method, this method requires that the first line of the CSV file contains a comma-separated list of column names; these column names become the attributes on the returned objects. For example, consider the following CSV file:</p>
+
+<div class="highlight"><pre><span class="n">Year</span><span class="p">,</span><span class="n">Make</span><span class="p">,</span><span class="n">Model</span><span class="p">,</span><span class="n">Length</span>
+<span class="mi">1997</span><span class="p">,</span><span class="n">Ford</span><span class="p">,</span><span class="n">E350</span><span class="p">,</span><span class="mf">2.34</span>
+<span class="mi">2000</span><span class="p">,</span><span class="n">Mercury</span><span class="p">,</span><span class="n">Cougar</span><span class="p">,</span><span class="mf">2.38</span>
+</pre></div>
+
+<p>The resulting JavaScript array is:</p>
+
+<div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span><span class="s2">"Year"</span><span class="o">:</span> <span class="s2">"1997"</span><span class="p">,</span> <span class="s2">"Make"</span><span class="o">:</span> <span class="s2">"Ford"</span><span class="p">,</span> <span class="s2">"Model"</span><span class="o">:</span> <span class="s2">"E350"</span><span class="p">,</span> <span class="s2">"Length"</span><span class="o">:</span> <span class="s2">"2.34"</span><span class="p">},</span>
+  <span class="p">{</span><span class="s2">"Year"</span><span class="o">:</span> <span class="s2">"2000"</span><span class="p">,</span> <span class="s2">"Make"</span><span class="o">:</span> <span class="s2">"Mercury"</span><span class="p">,</span> <span class="s2">"Model"</span><span class="o">:</span> <span class="s2">"Cougar"</span><span class="p">,</span> <span class="s2">"Length"</span><span class="o">:</span> <span class="s2">"2.38"</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+
+<p>Note that the values themselves are always strings; they will not be automatically converted to numbers. JavaScript may coerce strings to numbers for you automatically (for example, using the + operator). By specifying an <i>accessor</i> function, you can convert the strings to numbers or other specific types, such as dates:</p>
+
+<div class="highlight"><pre><span class="nx">d3</span><span class="p">.</span><span class="nx">csv</span><span class="p">(</span><span class="s2">"example.csv"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">year</span><span class="o">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="o">+</span><span class="nx">d</span><span class="p">.</span><span class="nx">Year</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="c1">// convert "Year" column to Date</span>
+    <span class="nx">make</span><span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">Make</span><span class="p">,</span>
+    <span class="nx">model</span><span class="o">:</span> <span class="nx">d</span><span class="p">.</span><span class="nx">Model</span><span class="p">,</span>
+    <span class="nx">length</span><span class="o">:</span> <span class="o">+</span><span class="nx">d</span><span class="p">.</span><span class="nx">Length</span> <span class="c1">// convert "Length" column to number</span>
+  <span class="p">};</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rows</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>Using + rather than <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseInt">parseInt</a> or <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/parseFloat">parseFloat</a> is typically faster, though more restrictive. For example, "30px" when coerced using + returns NaN, while parseInt and parseFloat return 30.</p>
+
+<p><a name="wiki-parseRows" href="CSV#wiki-parseRows">#</a> d3.csv.<b>parseRows</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Parses the specified <em>string</em>, which is the contents of a CSV file, returning an array of arrays representing the parsed rows. The string is assumed to be <a href="http://tools.ietf.org/html/rfc4180">RFC4180-compliant</a>. Unlike the <a href="CSV#wiki-parse">parse</a> method, this method treats the header line as a standard row, and should be used whenever the CSV file does not contain a header. Each row is represented as an array rather than an object. Rows may have variable length. For example, consider the following CSV file:</p>
+
+<div class="highlight"><pre><span class="mi">1997</span><span class="p">,</span><span class="n">Ford</span><span class="p">,</span><span class="n">E350</span><span class="p">,</span><span class="mf">2.34</span>
+<span class="mi">2000</span><span class="p">,</span><span class="n">Mercury</span><span class="p">,</span><span class="n">Cougar</span><span class="p">,</span><span class="mf">2.38</span>
+</pre></div>
+
+<p>The resulting JavaScript array is:</p>
+
+<div class="highlight"><pre><span class="p">[</span>
+  <span class="p">[</span><span class="s2">"1997"</span><span class="p">,</span> <span class="s2">"Ford"</span><span class="p">,</span> <span class="s2">"E350"</span><span class="p">,</span> <span class="s2">"2.34"</span><span class="p">],</span>
+  <span class="p">[</span><span class="s2">"2000"</span><span class="p">,</span> <span class="s2">"Mercury"</span><span class="p">,</span> <span class="s2">"Cougar"</span><span class="p">,</span> <span class="s2">"2.38"</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+
+<p>Note that the values themselves are always strings; they will not be automatically converted to numbers. See <a href="CSV#wiki-parse">parse</a> for details.</p>
+
+<p>An optional <em>accessor</em> function may be specified as the second argument. This function is invoked for each row in the CSV file, being passed the current row and index as two arguments. The return value of the function replaces the element in the returned array of rows; if the function returns null, the row is stripped from the returned array of rows. In effect, the accessor is similar to applying a <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/map">map</a> and <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/filter">filter</a> operator to the returned rows. The accessor function is used by <a href="CSV#wiki-parse">parse</a> to convert each row to an object with named attributes.</p>
+
+<p><a name="wiki-format" href="CSV#wiki-format">#</a> d3.csv.<b>format</b>(<i>rows</i>)</p>
+
+<p>Converts the specified array of <em>rows</em> into comma-separated values format, returning a string. This operation is the reverse of <a href="CSV#wiki-parse">parse</a>. Each row will be separated by a newline (\n), and each column within each row will be separated by a comma (,). Values that contain either commas, double-quotes (") or newlines will be escaped using double-quotes.</p>
+
+<p>Each row should be an object, and all object properties will be converted into fields.  For greater control over which properties are converted, convert the rows into arrays containing only the properties that should be converted and use <a href="CSV#wiki-formatRows">formatRows</a>.</p>
+
+<p><a name="wiki-formatRows" href="CSV#wiki-formatRows">#</a> d3.csv.<b>formatRows</b>(<i>rows</i>)</p>
+
+<p>Converts the specified array of <em>rows</em> into comma-separated values format, returning a string. This operation is the reverse of <a href="CSV#wiki-parseRows">parseRows</a>. Each row will be separated by a newline (\n), and each column within each row will be separated by a comma (,). Values that contain either commas, double-quotes (") or newlines will be escaped using double-quotes.</p>
+
+<h2>
+<a name="tsv" class="anchor" href="#tsv"><span class="octicon octicon-link"></span></a>TSV</h2>
+
+<p>Tab-separated values are equivalent to comma-separated values, except the tab character is used as a delimiter rather than the comma.</p>
+
+<p><a name="wiki-tsv" href="#wiki-tsv">#</a> d3.<b>tsv</b>(<i>url</i>[, <i>accessor</i>][, <i>callback</i>])</p>
+
+<p>Equivalent to <a href="#wiki-csv">d3.csv</a>, but for tab-separated values.</p>
+
+<p><a name="wiki-tsv_parse" href="#wiki-tsv_parse">#</a> d3.tsv.<b>parse</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Equivalent to <a href="#wiki-parse">csv.parse</a>, but for tab-separated values.</p>
+
+<p><a name="wiki-tsv_parseRows" href="#wiki-tsv_parseRows">#</a> d3.tsv.<b>parseRows</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Equivalent to <a href="#wiki-parseRows">csv.parseRows</a>, but for tab-separated values.</p>
+
+<p><a name="wiki-tsv_format" href="#wiki-tsv_format">#</a> d3.tsv.<b>format</b>(<i>rows</i>)</p>
+
+<p>Equivalent to <a href="#wiki-format">csv.format</a>, but for tab-separated values.</p>
+
+<p><a name="wiki-tsv_formatRows" href="#wiki-tsv_formatRows">#</a> d3.tsv.<b>formatRows</b>(<i>rows</i>)</p>
+
+<p>Equivalent to <a href="#wiki-formatRows">csv.formatRows</a>, but for tab-separated values.</p>
+
+<h2>
+<a name="arbitrary-delimiters" class="anchor" href="#arbitrary-delimiters"><span class="octicon octicon-link"></span></a>Arbitrary Delimiters</h2>
+
+<p><a name="wiki-dsv" href="#wiki-dsv">#</a> d3.<b>dsv</b>(<i>delimiter</i>, <i>mimeType</i>)</p>
+
+<p>Constructs a new parser for the given delimiter and mime type. For example, to parse values separated by "|", the vertical bar character, use:</p>
+
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">dsv</span> <span class="o">=</span> <span class="nx">d3</span><span class="p">.</span><span class="nx">dsv</span><span class="p">(</span><span class="s2">"|"</span><span class="p">,</span> <span class="s2">"text/plain"</span><span class="p">);</span>
+</pre></div>
+
+<p><a name="wiki-_dsv" href="#wiki-_dsv">#</a> <b>dsv</b>(<i>url</i>[, <i>accessor</i>][, <i>callback</i>])</p>
+
+<p>Equivalent to <a href="#wiki-csv">d3.csv</a>, but for delimiter-separated values.</p>
+
+<p><a name="wiki-dsv_parse" href="#wiki-dsv_parse">#</a> dsv.<b>parse</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Equivalent to <a href="#wiki-parse">csv.parse</a>, but for delimiter-separated values.</p>
+
+<p><a name="wiki-dsv_parseRows" href="#wiki-dsv_parseRows">#</a> dsv.<b>parseRows</b>(<i>string</i>[, <i>accessor</i>])</p>
+
+<p>Equivalent to <a href="#wiki-parseRows">csv.parseRows</a>, but for delimiter-separated values.</p>
+
+<p><a name="wiki-dsv_format" href="#wiki-dsv_format">#</a> dsv.<b>format</b>(<i>rows</i>)</p>
+
+<p>Equivalent to <a href="#wiki-format">csv.format</a>, but for delimiter-separated values.</p>
+
+<p><a name="wiki-dsv_formatRows" href="#wiki-dsv_formatRows">#</a> dsv.<b>formatRows</b>(<i>rows</i>)</p>
+
+<p>Equivalent to <a href="#wiki-formatRows">csv.formatRows</a>, but for delimiter-separated values.</p>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="gollum-footer">
+  <p id="last-edit">
+    Last edited by Mike Bostock, <time class="js-relative-date" datetime="2013-09-11T10:54:18-07:00" title="2013-09-11 10:54:18">September 11, 2013</time>
+  </p>
+</div>
+</div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer">
+    <ul class="site-footer-links right">
+      <li><a href="https://status.github.com/">Status</a></li>
+      <li><a href="http://developer.github.com">API</a></li>
+      <li><a href="http://training.github.com">Training</a></li>
+      <li><a href="http://shop.github.com">Shop</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/about">About</a></li>
+
+    </ul>
+
+    <a href="/">
+      <span class="mega-octicon octicon-mark-github"></span>
+    </a>
+
+    <ul class="site-footer-links">
+      <li>&copy; 2013 <span title="0.07399s from github-fe124-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="/site/terms">Terms</a></li>
+        <li><a href="/site/privacy">Privacy</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+  </div><!-- /.site-footer -->
+</div><!-- /.container -->
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-fullscreen-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="js-fullscreen-contents" placeholder="" data-suggester="fullscreen_suggester"></textarea>
+          <div class="suggester-container">
+              <div class="suggester fullscreen-suggester js-navigation-container" id="fullscreen_suggester"
+                 data-url="/mbostock/d3/suggestions/commit">
+              </div>
+          </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="#" class="exit-fullscreen js-exit-fullscreen tooltipped leftwards" title="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="#" class="theme-switcher js-theme-switcher tooltipped leftwards"
+      title="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="#" class="octicon octicon-remove-close close ajax-error-dismiss"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+  </body>
+</html>
+

@@ -1,99 +1,93 @@
+var data = [4,8,15,16,23,42];
 
-// require("./dictionary4.js");
-// var fs = require("fs");
+var body = d3.select("body");
+var div = body.append("div");
+div.html("Hello, D3 world!");
 
-IW.cleanDictionary = [];
-for (var i = 0; i < IW.dictionary.length; i++) {
-	if(IW.dictionary[i] !== 1) {
-		IW.cleanDictionary.push(0);
-	} else {
-		IW.cleanDictionary.push(1);
-	}
-}
+// d3.select(".chart")
+//  .selectAll("div")
+//      .data(data)
+//  .enter().append("div")
+//      .style("width",function(d) { return d * 10 + "px";})
+//      .text(function(d) {return d;});
 
-function compareArrays(array2) {
-		console.log(IW.dictionary.length);
-		console.log(array2.length);
-	for(i =0; i < array2.length; i++) {
-		var origValue, newValue,correct;
+// var width = $(".chart").width();
+// var x = d3.scale.linear()
+//  .domain([0, d3.max(data)])
+//  .range([0,width]);
+// d3.select(".chart")
+//   .selectAll("div")
+//     .data(data)
+//   .enter().append("div")
+//     .style("width", function(d) { return x(d) + "px"; })
+//     .text(function(d) { return d; });
 
-		correct = true;
-		origValue = IW.dictionary[i];
-		newValue = array2[i];
+// var data = [4, 8, 15, 16, 23, 42];
 
-		if(origValue == undefined) {origValue = 0;}//no else
 
-		if(origValue !== newValue) {
-			console.log("Value mismatch at index " + i);
-			correct = false;
-		}
-	}
-	return correct
-}
+/*Bar chart tutorial*/
+// var margin = {top:20, right: 30, bottom: 30, left: 40};
+// var rawHeight = 500 ;
+// var rawWidth = $(".chart").width();
+// var height = rawHeight - margin.top - margin.bottom;
+// var width = rawWidth - margin.left - margin.right;
 
-var correct = compareArrays(IW.cleanDictionary);
-console.log(correct);
+// var y = d3.scale.linear()
+//     .range([height, 0]);
 
-// IW.stringConvert = "";
-// //compress the array;
-// for (i=0; i< IW.cleanDictionary.length; i += 6) {
-// 	var ones,twos,fours,eights,sixteens,thirtytwos,charcode;
-// 	ones = IW.cleanDictionary[i];
-// 	twos = IW.cleanDictionary[i+1];
-// 	fours = IW.cleanDictionary[i+2];
-// 	eights = IW.cleanDictionary[i+3];
-// 	sixteens = IW.cleanDictionary[i+4];
-// 	thirtytwos = IW.cleanDictionary[i+5];
+// var x = d3.scale.ordinal()
+//     .rangeRoundBands([0, width],.1);
 
-// 	charcode = 33; //avoid blank spaces
-// 	charcode += ones;
-// 	charcode += twos * 2;
-// 	charcode += fours * 4;
-// 	charcode += eights * 8;
-// 	charcode += sixteens * 16;
-// 	charcode += thirtytwos * 32;
 
-// 	IW.stringConvert += String.fromCharCode(charcode);
+// var xAxis = d3.svg.axis()
+//     .scale(x)
+//     .orient("bottom");
+
+// var yAxis = d3.svg.axis()
+//     .scale(y)
+//     .orient("left")
+//     .ticks(10, "%");
+        
+// var chart = d3.select(".chart")
+//     .attr("width", rawWidth)
+//     .attr("height",rawHeight)
+//   .append("g")
+//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+// d3.tsv("data.txt", type, function(error,data) {
+//     x.domain(data.map(function(d) {return d.name;}));
+//     y.domain([0, d3.max(data,function(d) { return d.value; })]);
+//     var barWidth = width / data.length;
+    
+
+//       chart.append("g")
+//       .attr("class", "x axis")
+//       .attr("transform", "translate(0," + height + ")")
+//       .call(xAxis);
+
+//       chart.append("g")
+//           .attr("class", "y axis")
+//           .call(yAxis)
+//         .append("text")
+//           .attr("transform", "rotate(-90)")
+//           .attr("y", 6)
+//           .attr("dy", ".71em")
+//           .style("text-anchor", "end")
+//           .text("Frequency");
+
+//       chart.selectAll(".bar")
+//           .data(data)
+//         .enter().append("rect")
+//           .attr("class", "bar")
+//           .attr("x", function(d) { return x(d.name); })
+//           .attr("y", function(d) { return y(d.value); })
+//           .attr("height", function(d) { return height - y(d.value); })
+//           .attr("width", x.rangeBand());
+// });
+
+// function type(d) {
+//     d.value = +d.value; //force to a number
+//     return d;
 // }
 
-IW.extractArray = function(compressedString) {
-	var compressedArray = compressedString.split("");
-	var compressConversion = [];
-	for(i=0; i< compressedArray.length; i++) {
-		var ones,twos,fours,eights,sixteens,thirtytwos,character,value,temp;
-		character = compressedArray[i];
-		value = character.charCodeAt() - 33;
-		temp = value;
-		thirtytwos = Math.floor(value/32);
-		temp -= thirtytwos * 32;
-		sixteens = Math.floor(temp/16);
-		temp -= sixteens * 16;
-		eights = Math.floor(temp/8);
-		temp -= eights * 8;
-		fours = Math.floor(temp/4);
-		temp -= fours * 4;
-		twos = Math.floor(temp/2);
-		temp -= twos * 2;
-		ones = temp;
-		compressConversion.push(ones,twos,fours,eights,sixteens,thirtytwos);
-	}
-
-	return compressConversion;
-}
-
-$.getJSON("/js/compressedDictionary.json",function(data) {
-	var compressedDictionary = data.dictionary;
-	IW.compressConversion = IW.extractArray(compressedDictionary);
-	console.log(compareArrays(IW.compressConversion));
-	
-})
-
-// var storageObj = {};
-// storageObj.dictionary = compressedString;
-// fs.writeFile("compressedDictionary.txt", JSON.stringify(storageObj), function(err) {
-//     if(err) {
-//         console.log(err);
-//     } else {
-//         console.log("The file was saved!");
-//     }
-// }); 
+var circle = svg.selectAll("circle");

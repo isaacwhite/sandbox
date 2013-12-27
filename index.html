@@ -21,12 +21,43 @@
         <![endif]-->
 
         <p>Hello world! This is HTML5 Boilerplate.</p>
+        <code></code>
+        <style>
+
+        body {
+            padding: 2rem;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .chart {
+            width: 100%;
+        }
+        .bar {
+          fill: steelblue;
+        }
+
+        .axis text {
+          font: 10px sans-serif;
+        }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+          display: none;
+        }
+
+        </style>
+        <svg class="chart"></svg>
 
         <script src="js/vendor/jquery-1.10.1.min.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/bitArray.js"></script>
-        <script src="js/codecBase64.js"></script>
-        <script src="js/dictionary4.js"></script>
+        <script src="js/d3.v3.min.js"></script>
         <script src="js/main.js"></script>
 
     </body>
