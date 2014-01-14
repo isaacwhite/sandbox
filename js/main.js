@@ -1,93 +1,96 @@
-var data = [4,8,15,16,23,42];
+$(function() {
+    $("form").change(function(e) {
+        var file = e.originalEvent.srcElement.files[0],
+        reader = new FileReader();
 
-var body = d3.select("body");
-var div = body.append("div");
-div.html("Hello, D3 world!");
+        reader.onload = function(e) {
+          console.log(e.target);
+          var srcInfo = e.target.result;
+          var urlString = 'url("' + e.target.result + '")';
+          // $(".preview").css({'background-image':urlString});
+          var imageTag = $("<img id='barcode'>").attr('src',srcInfo);
+          $('body').append(imageTag);
+          decodeBarCode("barcode");
 
-// d3.select(".chart")
-//  .selectAll("div")
-//      .data(data)
-//  .enter().append("div")
-//      .style("width",function(d) { return d * 10 + "px";})
-//      .text(function(d) {return d;});
+        }
+        // console.log(file);
+        reader.readAsDataURL(file);
+        // console.log(getBarcodeFromImage("barcode"));
+        // $(this).submit();
 
-// var width = $(".chart").width();
-// var x = d3.scale.linear()
-//  .domain([0, d3.max(data)])
-//  .range([0,width]);
-// d3.select(".chart")
-//   .selectAll("div")
-//     .data(data)
-//   .enter().append("div")
-//     .style("width", function(d) { return x(d) + "px"; })
-//     .text(function(d) { return d; });
-
-// var data = [4, 8, 15, 16, 23, 42];
-
-
-/*Bar chart tutorial*/
-// var margin = {top:20, right: 30, bottom: 30, left: 40};
-// var rawHeight = 500 ;
-// var rawWidth = $(".chart").width();
-// var height = rawHeight - margin.top - margin.bottom;
-// var width = rawWidth - margin.left - margin.right;
-
-// var y = d3.scale.linear()
-//     .range([height, 0]);
-
-// var x = d3.scale.ordinal()
-//     .rangeRoundBands([0, width],.1);
-
-
-// var xAxis = d3.svg.axis()
-//     .scale(x)
-//     .orient("bottom");
-
-// var yAxis = d3.svg.axis()
-//     .scale(y)
-//     .orient("left")
-//     .ticks(10, "%");
-        
-// var chart = d3.select(".chart")
-//     .attr("width", rawWidth)
-//     .attr("height",rawHeight)
-//   .append("g")
-//     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-// d3.tsv("data.txt", type, function(error,data) {
-//     x.domain(data.map(function(d) {return d.name;}));
-//     y.domain([0, d3.max(data,function(d) { return d.value; })]);
-//     var barWidth = width / data.length;
+    });
+   
+    function decodeBarCode(elementID) {
+      var c=document.createElement("canvas");
+      var ctx=c.getContext("2d");
+      var img = document.getElementById(elementID);
+      c.height=480;
+      c.width=640;
+      var workerCount = 0;
+      function receiveMessage(e) {
+        if(e.data.success === "log") {
+          console.log(e.data.result);
+          return;
+        }
+        workerCount--;
+        if(e.data.success){
+          var tempArray = e.data.result;
+          for(var i = 0; i < tempArray.length; i++) {
+            if(resultArray.indexOf(tempArray[i]) == -1) {
+              resultArray.push(tempArray[i]);
+            }
+          }
+          workerCount = 0;
+        }else {
+          if(workerCount == 1) {
+            FlipWorker.postMessage({pixels: ctx.getImageData(0,0,c.width,c.height).data, cmd: "flip"});
+          }
+        }
+        if(workerCount == 0){
+          if(resultArray.length === 0) {
+            // ResultOfDecoding.innerHTML="Decoding failed.";
+            console.log("failed to decode image");
+          }else {
+            // ResultOfDecoding.innerHTML=resultArray.join("<br />");
+            console.log(resultArray);
+          }
+        }
+      }
+      var DecodeWorker = new Worker("/js/vendor/DecoderWorker.js");
+      var FlipWorker = new Worker("/js/vendor/DecoderWorker.js");
+      DecodeWorker.onmessage = receiveMessage;
+      FlipWorker.onmessage = receiveMessage;
+      var resultArray = [];
+   
+      function Decode() {
+        if(workerCount > 0) return;
+        workerCount = 2;
+        // ResultOfDecoding.innerHTML='';
+        resultArray = [];
+        ctx.drawImage(img,0,0,c.width,c.height);
+        DecodeWorker.postMessage({pixels: ctx.getImageData(0,0,c.width,c.height).data, cmd: "normal"});
+      }
+      Decode();
+    }
     
 
-//       chart.append("g")
-//       .attr("class", "x axis")
-//       .attr("transform", "translate(0," + height + ")")
-//       .call(xAxis);
 
-//       chart.append("g")
-//           .attr("class", "y axis")
-//           .call(yAxis)
-//         .append("text")
-//           .attr("transform", "rotate(-90)")
-//           .attr("y", 6)
-//           .attr("dy", ".71em")
-//           .style("text-anchor", "end")
-//           .text("Frequency");
+    /**END BARCODE SCANNER**/
+    $("form").submit(function(e,data) {
+        console.log(data);
+        e.preventDefault();
+        console.log(e);
+        $('form input')
 
-//       chart.selectAll(".bar")
-//           .data(data)
-//         .enter().append("rect")
-//           .attr("class", "bar")
-//           .attr("x", function(d) { return x(d.name); })
-//           .attr("y", function(d) { return y(d.value); })
-//           .attr("height", function(d) { return height - y(d.value); })
-//           .attr("width", x.rangeBand());
-// });
+        var file = e.dataTransfer.files[0],
+        reader = new FileReader();
+        reader.onload = function (event) {
+          console.log(event.target);
+          holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+        };
+        console.log(file);
+        reader.readAsDataURL(file);
 
-// function type(d) {
-//     d.value = +d.value; //force to a number
-//     return d;
-// }
+    })
 
-var circle = svg.selectAll("circle");
+});
