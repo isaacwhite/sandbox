@@ -11,14 +11,27 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="../js/vendor/jquery.Jcrop.min.css" type="text/css" />
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <style type="text/css">
             #barcode{
-                width: 20rem;
+                width: 640px;
                 height: auto;
+                position: absolute;
+                top:0;
+                left:0;
+                z-index: -1;
+                /*opacity: 0;*/
             }
+            .jcrop-holder {
+                /*opacity: .4;*/
+            };
+            .image-contain {
+                position:relative;
+            }
+
         </style>
     </head>
     <body>
@@ -28,10 +41,16 @@
 
         <p>Hello world! This is HTML5 Boilerplate.</p>
         <code></code>
-        <form><input type="file" accept="image/*" capture="camera"></form>
+        <div class="image-contain">
+            <img src="/img/invisible.png" id="crop">
+            <img src id="barcode">
+        </div>
+        <form><input id="img-src" type="file" accept="image/*" capture="camera"></form>
         <div class="preview"></div>
+        <p id="results"></p>
 
         <script src="js/vendor/jquery-1.10.1.min.js"></script>
+         <script src="js/vendor/jquery.jCrop.min.js"></script>
         <script src="js/main.js"></script>
 
     </body>
