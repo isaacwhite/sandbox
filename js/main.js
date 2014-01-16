@@ -1,33 +1,5 @@
 
 $(function() {
-    // $("form").change(function(e) {
-    //     var file = e.originalEvent.srcElement.files[0],
-    //     reader = new FileReader();
-
-    //     reader.onload = function(e) {
-    // //       console.log(e.target);
-    //       var srcInfo = e.target.result;
-    //       // var urlString = 'url("' + e.target.result + '")';
-    // //       // $(".preview").css({'background-image':urlString});
-    //       $("#barcode").remove();
-    //       var imageTag = $("<img id='barcode'>").attr('src',srcInfo);
-    //       $('body').append(imageTag);
-    //       decodeBarCode("barcode",function(result){
-    //         var resultHead = $('<h1 class="result-info">').text(result.data);
-    //         $('body').append(resultHead);
-    //       });
-
-    //     }
-    //     // console.log(file);
-    //     reader.readAsDataURL(file);
-    //     // console.log(getBarcodeFromImage("barcode"));
-    //     // $(this).submit();
-
-    // });
-  
-
-
-   
   /* --------------------------------------------------
     Javascript Only Barcode_Reader V1.0 by Eddie Larsson <https://github.com/EddieLa/BarcodeReader>
     Source code below this comment block modified slightly for use in this project. Worker code used as previously written.
@@ -69,6 +41,7 @@ $(function() {
       var resultArray = [];
       ctx = Canvas.getContext("2d");
       var workerCount = 0;
+      //this is the callback function for each worker.
       function receiveMessage(e) {
         if(e.data.success === "log") {
           console.log(e.data.result);
@@ -89,6 +62,7 @@ $(function() {
           }
         }
       }
+      //get the workers
       var DecodeWorker = new Worker("/js/vendor/DecoderWorker.js");
       var RightWorker = new Worker("/js/vendor/DecoderWorker.js");
       var LeftWorker = new Worker("/js/vendor/DecoderWorker.js");
@@ -97,7 +71,88 @@ $(function() {
       RightWorker.onmessage = receiveMessage;
       LeftWorker.onmessage = receiveMessage;
       FlipWorker.onmessage = receiveMessage;
+      //make sure they both exist
+
+      function getOptions(cropData,imgSrc,classNameCompare,callback) {
+        //let's figure out the native dimensions.
+        var imageOrig = new Image();
+        var data = cropData;
+        imageOrig.src = imgSrc;
+        imageOrig.onload = function() {
+          var nativeWidth, nativeHeight, scaledWidth, scaledHeight;
+          nativeWidth = imageOrig.width;
+          nativeHeight = imageOrig.height;
+          scaledWidth = $(classNameCompare).width();
+          scaledHeight = $(classNameCompare).height();
+          var returnObj; //we will return an array containing two possible croppings.
+
+          if (((scaledHeight > scaledWidth) && (nativeHeight > nativeWidth))
+              || ((scaledWidth > scaledHeight) && (nativeWidth > nativeHeight))) {
+            console.log("match");
+            //proportions match. just deal with a flipped case.
+            var xScale = nativeWidth/scaledWidth;
+            var yScale = nativeHeight/scaledHeight; 
+            //if proportions match, scale factor is easy.
+            var first = { //everything is perfect. Yeah, right.
+              'x' : data.x * xScale,
+              'y' : data.y * yScale,
+              'w' : data.w * xScale,
+              'h' : data.h * yScale
+            };
+            var second = {//it's flipped. Oops.
+              'x' : nativeWidth - xScale * (data.x + data.w),
+              'y' : nativeHeight - yScale * (data.y + data.h),
+              'w' : data.w * xScale,
+              'h' : data.h * yScale
+            };
+          } else {
+            console.log("doesn't match!");
+            //proportions DO NOT MATCH. The image has been rotated either left or right.
+            xScale = nativeWidth/scaledHeight;
+            yScale = nativeHeight/scaledWidth; 
+            //hope that scale factor was right. Fifty-fifty shot I guess...
+            first = { //rotated clockwise
+              'x' : nativeWidth - xScale * (data.y + data.h),
+              'y' : data.x * yScale,
+              'w' : data.h * xScale,
+              'h' : data.w * yScale
+            };
+            second = {//rotated counter clockwise
+              'x' : data.y * xScale,
+              'y' : nativeHeight - yScale * (data.x + data.w),
+              'w' : data.h * xScale,
+              'h' : data.w * yScale
+            };
+          }
+          returnObj = [first,second];
+          callback(returnObj); //call the callback. You better give one [please].
+        } //don't do anything else outside onload.
+      }
+
+      function confirmCrop(cropData,callback) {
+        var formString = "<div class='confirm-crop'><h2>Because of the way some mobile devices handle rotation of images, we require additional verification.<br>Is this your intended crop?</h2><form id='confirm-crop'><button value='yes'>Yes</button><button value='no'>No</button></form></div>";
+        $("body").append(formString);
+        $("#confirm-crop button").click(function(e){
+          e.preventDefault();
+          var result = $(this).val();
+          var callbackObj;
+          if(result === 'yes') {
+            callbackObj = {'adj':false};
+          } else {
+            callbackObj = {
+              'adj': true,
+              'x' : cropData[1].x,
+              'y' : cropData[1].y,
+              'w' : cropData[1].w,
+              'h' : cropData[1].h
+            };
+          }
+          $('.confirm-crop').remove();
+          callback(callbackObj);
+        });
+      }
       if(takePicture && showPicture) {
+        //event handler for form change.
         takePicture.onchange = function (event) {
           var files = event.target.files
           if (files && files.length > 0) {
@@ -111,26 +166,12 @@ $(function() {
                   onSelect: showCoords
               });
 
+              //process the data after making a selection
               function showCoords(data) {
-                // console.log(data);
-                var imageOrig = new Image();
-                imageOrig.src = imgURL;
-                var ow = imageOrig.width;
-                var oh = imageOrig.height;
-                var sw = $('.jcrop-holder').width();
-                var sh = $('.jcrop-holder').height();
-                var cropInfo = {
-                  'x': data.x,
-                  'y': data.y,
-                  'w': data.w,
-                  'h': data.h,
-                  'ow':ow,
-                  'oh':oh,
-                  'sw':sw,
-                  'sh':sh
-                }
-                // URL.revokeObjectURL(imgURL);
-                DecodeBar(cropInfo);
+                //check against the original.
+               
+                  // URL.revokeObjectURL(imgURL);
+                  getOptions(data,imgURL,'.jcrop-holder',DecodeBar);
               }
               //no idea why the following code was necessary, but it was breaking Jcrop.
             }
@@ -151,29 +192,35 @@ $(function() {
         };
       }
       function DecodeBar(cropDimensions){
-        console.log("bar code analyzer called");
-        Result.innerHTML="";
-        var c = cropDimensions;
-        var xConv = c.sw/c.ow;//calc proportions for x & y based on original and scaled dimensions
-        var yConv = c.sh/c.oh;
-        var calcWidth = Math.round(c.w / xConv);
-        var calcHeight = Math.round(c.h / yConv);
-        var calcX = Math.round(c.x/xConv);
-        var calcY = Math.round(c.y/yConv);
-        //we're going to miss the below event handler since we are delaying execution of this function until after crop.
-        //just run it whenever the function is called.
-        // showPicture.onload = function(){
-          ctx.drawImage(showPicture,calcX,calcY,calcWidth,calcHeight,0,0,Canvas.width,Canvas.height);
-
-          // ctx.drawImage(showPicture,0,0,Canvas.width,Canvas.height,c.x,c.y,c.w,c.h);
-          $("body").append(Canvas);
+        console.log(cropDimensions);
+        // console.log("bar code analyzer called");
+        Result.innerHTML ="";
+        var calcX, calcY, calcWidth, calcHeight;
+        calcX = cropDimensions[0].x;
+        calcY = cropDimensions[0].y;
+        calcWidth = cropDimensions[0].w;
+        calcHeight = cropDimensions[0].h;
+        ctx.drawImage(showPicture,calcX,calcY,calcWidth,calcHeight,0,0,Canvas.width,Canvas.height);
+        $("body").append(Canvas);
+        confirmCrop(cropDimensions,function(data){
+          if(data.adj === true) {
+            console.log("switching crop!");
+            calcX = data.x;
+            calcY = data.y;
+            calcWidth = data.w;
+            calcHeight = data.h;
+            ctx.drawImage(showPicture,calcX,calcY,calcWidth,calcHeight,0,0,Canvas.width,Canvas.height);
+            $("canvas").remove();
+            $("body").append(Canvas);
+          }
           resultArray = [];
           workerCount = 4;
           DecodeWorker.postMessage({pixels: ctx.getImageData(0,0,Canvas.width,Canvas.height).data, cmd: "normal"});
           RightWorker.postMessage({pixels: ctx.getImageData(0,0,Canvas.width,Canvas.height).data, cmd: "right"});
           LeftWorker.postMessage({pixels: ctx.getImageData(0,0,Canvas.width,Canvas.height).data, cmd: "left"});
           FlipWorker.postMessage({pixels: ctx.getImageData(0,0,Canvas.width,Canvas.height).data, cmd: "flip"});
-        // }
+          
+        });
       }
     
   /**END BARCODE SCANNER**/
