@@ -1,0 +1,35 @@
+Four cases:
+Keep in mind, total_width and total_height always drawn from original image with whatever incorrect rotation may be applied, so no need to swap that.
+
+Whenever an image is passed, we can only guarantee a check on correct proportions between placed image and file read, so we can narrow it down to two options for each of these.
+
+If proportion doesn't match, we are looking at B or D.
+If it does, we are looking at A or C
+
+A:
+Rotation is correct
+x = x
+y = y
+w = w
+h = h
+
+B: 
+Rotation is 90 degrees clockwise
+x = total_width - (y+h)
+y = x
+w = h
+h = w
+
+C:
+Image is flipped
+x = total_width - (x+w)
+y = total_height - (y+h)
+w = w
+h = h
+
+D:
+Rotation is 90 degrees counterclockwise
+x = y
+y = total_height - (x+w)
+w = h
+h = w
