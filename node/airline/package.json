@@ -1,0 +1,14 @@
+{
+  "name": "airline",
+  "version": "0.0.0",
+  "description": "Keeps track of airline's flights",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Isaac White <iaw2105@columbia.edu>",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~3.4.8"
+  }
+}
